@@ -16,39 +16,32 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "user")
+@Table(name = "contact")
 @Getter
 @Setter
-@NoArgsConstructor
 @ToString
-public class user {
+@NoArgsConstructor
+public class contact {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "userId")
-	private Integer userId;
+	private int cId;
 	
 	@Column(name = "user_name",length = 100,nullable = false)
 	@NotBlank(message = "Name cannot be blank!")
 	@Size(min = 3,max = 99, message = "Name's Length can be between 3-99")
 	private String name;
+	private String secondName;
+	private String work;
 	
 	@Column(name="email",length = 100,nullable = false,unique = true)
 	@NotBlank(message = "E-Mail cannot be blank")
 	@Email(message = "Please Enter email in correct Format!")
 	private String email;
+	private String image;
 	
-	@Column(name="password",length = 100,nullable = false)
-	@NotBlank(message = "Password cannot be Blank!")
-	@Size(min = 3,max = 15, message = "Password Length can be between 3-15")
-	private String password;
-	
-	private String imageUrl;
-	
-	private String about;
-	
-	private String role;
-	
-	private boolean enabled;	
+	@Column(length = 5000)
+	private String description;
+	private String phone;
 	
 }
